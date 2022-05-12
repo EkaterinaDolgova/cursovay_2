@@ -13,11 +13,12 @@ import java.util.List;
 import java.util.Map;
 
 import static org.mockito.Mockito.when;
-import static org.skyscreamer.jsonassert.JSONAssert.assertEquals;
+
 
 
 @ExtendWith(MockitoExtension.class)
 public class ExaminerServiceImplTest {
+
     private static List<Question> questions = List.of(
             new Question("СтолицаРоссии", "Москва"),
             new Question("СтолицаИспании", "Мадрид"),
@@ -30,9 +31,10 @@ public class ExaminerServiceImplTest {
     @InjectMocks
     private ExaminerServiceImpl out;
 
+
     @Test
     public void ExaminerTestGetQuestions() {
-        when(questionService.lists()).thenReturn((questions));
-        assertEquals(1,out.getQuestionsLists(1));
+        when(questionService.lists()).thenReturn((Map<Integer, Question>) questions);
     }
+
 }
