@@ -9,9 +9,9 @@ import sky.pro.cursovay_2.domain.Question;
 import sky.pro.cursovay_2.service.ExaminerServiceImpl;
 import sky.pro.cursovay_2.service.QuestionService;
 
-import java.util.List;
 import java.util.Map;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 
@@ -19,11 +19,11 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 public class ExaminerServiceImplTest {
 
-    private static List<Question> questions = List.of(
+    private static Map<Integer, Question> questions = Map.of(1,
             new Question("СтолицаРоссии", "Москва"),
-            new Question("СтолицаИспании", "Мадрид"),
-            new Question("СтолицаЕгипта", "Каир"),
-            new Question("СтолицаКитая", "Пекин"));
+            2, new Question("СтолицаИспании", "Мадрид"),
+            3, new Question("СтолицаЕгипта", "Каир"),
+            4, new Question("СтолицаКитая", "Пекин"));
 
     @Mock
     private QuestionService questionService;
@@ -34,7 +34,9 @@ public class ExaminerServiceImplTest {
 
     @Test
     public void ExaminerTestGetQuestions() {
-        when(questionService.lists()).thenReturn((Map<Integer, Question>) questions);
+        when(questionService.lists()).thenReturn((questions));
+       // assertEquals(null, out.getQuestionsLists(anyInt()));
+        assertEquals(false, out.getQuestionsLists(1).isEmpty());
     }
 
 }

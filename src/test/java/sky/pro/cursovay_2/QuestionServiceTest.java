@@ -11,9 +11,9 @@ public class QuestionServiceTest {
 
     @Test
     public void questionTestAdd() {
-        Question questions = new Question("СтолицаРоссии", "Москва");
+        Question questions = new Question("СтолицаРоссии2", "Москва");
         out.add(questions);
-        assertEquals(5, out.lists().size());
+        assertEquals(7, out.lists().size());
     }
     @Test
     public void questionTestFind() {
